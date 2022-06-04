@@ -1,0 +1,16 @@
+{
+  "name": "csv-utils",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nrwl/cli": "14.1.9",
+    "@nrwl/js": "14.1.9",
+    "@nrwl/workspace": "14.1.9",
+    "nx": "14.1.9",
+    "prettier": "^2.5.1",
+    "typescript": "~4.6.2"
+  }
+}
