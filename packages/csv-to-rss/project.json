@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/csv-to-rss/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/csv-to-rss/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/csv-to-rss"],
+      "options": {
+        "jestConfig": "packages/csv-to-rss/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/csv-to-rss",
+        "tsConfig": "packages/csv-to-rss/tsconfig.lib.json",
+        "packageJson": "packages/csv-to-rss/package.json",
+        "main": "packages/csv-to-rss/src/index.ts",
+        "assets": ["packages/csv-to-rss/*.md"]
+      }
+    }
+  },
+  "tags": []
+}
