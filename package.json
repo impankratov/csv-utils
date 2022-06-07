@@ -14,6 +14,7 @@
     "@nrwl/workspace": "14.1.9",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",
+    "@types/parallel-transform": "^1.1.1",
     "@typescript-eslint/eslint-plugin": "~5.18.0",
     "@typescript-eslint/parser": "~5.18.0",
     "cz-conventional-changelog": "^3.3.0",
@@ -27,6 +28,8 @@
     "typescript": "~4.6.2"
   },
   "dependencies": {
+    "csv-parse": "^5.1.0",
+    "parallel-transform": "^1.2.0",
     "tslib": "^2.3.0"
   },
   "config": {

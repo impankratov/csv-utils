@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`csvToRss should work 1`] = `
+Array [
+  Array [
+    Object {
+      "Date": "07/05/1999",
+      "Description": "Lorem ipsum dolor sit amet qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+      "Id": "0001",
+      "Title": " Lorem ipsum dolor sit amet",
+    },
+  ],
+  Array [
+    Object {
+      "Date": "15/12/2000",
+      "Description": "Lorem ipsum dolor sit amet qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+      "Id": "0002",
+      "Title": "Lorem ipsum",
+    },
+  ],
+  Array [
+    Object {
+      "Date": "21/03/2003",
+      "Description": "Lorem ipsum dolor sit amet qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+      "Id": "0003",
+      "Title": "Lorem",
+    },
+  ],
+]
+`;
