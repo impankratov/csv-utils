@@ -28,3 +28,26 @@ Array [
   ],
 ]
 `;
+
+exports[`csvToRss should work 2`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<entry>
+  <Id>0001</Id>
+  <Date>07/05/1999</Date>
+  <Title> Lorem ipsum dolor sit amet</Title>
+  <Description>Lorem ipsum dolor sit amet qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</Description>
+</entry>
+<entry>
+  <Id>0002</Id>
+  <Date>15/12/2000</Date>
+  <Title>Lorem ipsum</Title>
+  <Description>Lorem ipsum dolor sit amet qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</Description>
+</entry>
+<entry>
+  <Id>0003</Id>
+  <Date>21/03/2003</Date>
+  <Title>Lorem</Title>
+  <Description>Lorem ipsum dolor sit amet qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</Description>
+</entry>
+"
+`;

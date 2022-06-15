@@ -96,13 +96,23 @@ describe('csvToRss', () => {
 
     const TEST_INPUT = 'input.csv';
     const TEST_OUTPUT = 'output.xml';
+    const TRANSFORM_FN = jest.fn((v) => Promise.resolve(v));
 
-    const TRANSFORM_FN = jest.fn((v) => Promise.resolve(v.toString()));
-
-    await csvToRss({ transformFn: TRANSFORM_FN }, TEST_INPUT, TEST_OUTPUT);
+    await csvToRss(
+      {
+        transformFn: TRANSFORM_FN,
+        xmlTransformOptions: {
+          objectName: 'entry',
+        },
+      },
+      TEST_INPUT,
+      TEST_OUTPUT
+    );
 
     expect(createReadStream).toHaveBeenCalledWith(TEST_INPUT);
     expect(TRANSFORM_FN.mock.calls).toMatchSnapshot();
+
     expect(createWriteStream).toHaveBeenCalledWith(TEST_OUTPUT, {});
+    expect((createWriteStream as any).__mock.buffer).toMatchSnapshot();
   });
 });
