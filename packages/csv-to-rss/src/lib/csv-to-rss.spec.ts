@@ -8,29 +8,27 @@ jest.mock('node:fs', () => {
 
   const createReadStreamMock = jest.fn();
 
-  (createReadStreamMock as any).__content = [];
+  let output: string[] = [];
+  (createReadStreamMock as any).__mockOutput = (o: string[]) => (output = o);
 
   createReadStreamMock.mockImplementation(() => {
     const readable = new Readable();
 
-    (createReadStreamMock as any).__content.forEach((l: string) =>
-      readable.push(l)
-    );
+    output.forEach((l: string) => readable.push(l));
 
     readable.push(null);
 
     return readable;
   });
 
-  class WriteMemory extends Writable {
-    buffer: string;
+  class WriteInMemory extends Writable {
+    buffer: string = '';
 
     constructor() {
       super();
-      this.buffer = '';
     }
 
-    _write(chunk: string, _: any, next: () => any) {
+    _write(chunk: Buffer, _: any, next: () => any) {
       this.buffer += chunk;
       next();
     }
@@ -40,12 +38,14 @@ jest.mock('node:fs', () => {
     }
   }
 
-  const MockWriteStream = new WriteMemory();
+  const MockWriteStream = new WriteInMemory();
 
   const createWriteStreamMock = jest.fn().mockImplementation(() => {
     MockWriteStream.reset();
     return MockWriteStream;
   });
+
+  (createWriteStreamMock as any).__mock = MockWriteStream;
 
   return {
     __esModule: true,
@@ -84,13 +84,15 @@ const objectToCsv = (obj: Object) =>
     (res, v, i, arr) => `${res},${v}${arr.length - i === 1 ? '\n' : ''}`
   );
 
+const getDummyCsvData = () =>
+  [
+    // 'Id,Title,Description,Date\n',
+    `${Object.keys(records[0]).join(',')}\n`,
+  ].concat(records.map(objectToCsv));
+
 describe('csvToRss', () => {
   it('should work', async () => {
-    (createReadStream as any).__content = [
-      // 'Id,Title,Description,Date\n',
-      `${Object.keys(records[0]).join(',')}\n`,
-      ...records.map(objectToCsv),
-    ];
+    (createReadStream as any).__mockOutput(getDummyCsvData());
 
     const TEST_INPUT = 'input.csv';
     const TEST_OUTPUT = 'output.xml';
