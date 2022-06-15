@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@im.pankratov/csv-to-rss": ["packages/csv-to-rss/src/index.ts"]
-    }
+    },
+    "strict": true
   },
   "exclude": ["node_modules", "tmp"]
 }
